@@ -83,7 +83,7 @@ const API = (() => {
   // GENIUS API METHODS
   const getSongDetail = async slug => {
     const { REACT_APP_GENIUS_KEY } = process.env;
-    const resp = await fetch(`search?q=${slug}&access_token=${REACT_APP_GENIUS_KEY}`);
+    const resp = await fetch(`${GENIUS_BASE_URL}search?q=${slug}&access_token=${REACT_APP_GENIUS_KEY}`);
     const data = await resp.json();
     console.log(data);
   };

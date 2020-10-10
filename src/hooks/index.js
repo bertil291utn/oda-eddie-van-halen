@@ -3,6 +3,7 @@ import ACTIONS from '../actions';
 import API from '../Api';
 import trackReducer from '../reducers/trackReducer';
 
+const VAL_HALEN_ID='2cnMpRsOVqtPMfq7YiFE6K';
 
 const addToObject = (objectArray = []) => {
   const responseArray = []
@@ -29,7 +30,6 @@ const GetTracksHook = () => {
 
   useEffect(() => {
     API.getArtist('artist:Van Halen').then(data => {
-      console.log(data.tracks.items);
       dispatch({
         type: ACTIONS.INITIALIZE,
         payload: addToObject(data.tracks.items)

@@ -15,7 +15,6 @@ const AlbumFilter = () => {
     );
   }, [])
 
-  // const albums2 = ['album1', 'album2'];
   return (
     <label htmlFor="albums">
       Albums
@@ -23,8 +22,9 @@ const AlbumFilter = () => {
         name="albums"
         id="albums"
       >
+        <option value="All">All</option>
         {albums.map(album => (
-          <option key={album.id} value={album.name}>
+          <option key={album.id} value={album.id}>
             {album.name}
           </option>
         ))}
