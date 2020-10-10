@@ -1,9 +1,11 @@
 import SpotifyWebApi from 'spotify-web-api-js';
 
-const API = (() => {
-  const TOKEN_VAR = 'temp_token_spotify';
-  const spotifyApi = new SpotifyWebApi();
+const TOKEN_VAR = 'temp_token_spotify';
+const spotifyApi = new SpotifyWebApi();
+const GENIUS_BASE_URL = 'https://api.genius.com/'
 
+const API = (() => {
+  // private Spotify token methods
   const getSpotifyToken = async () => {
     const myHeaders = new Headers();
     const basic = `Basic ${btoa(`${process.env.REACT_APP_CLIENT_ID}:${process.env.REACT_APP_CLIENT_SECRET}`)}`;
@@ -31,39 +33,59 @@ const API = (() => {
     localStorage.setItem(TOKEN_VAR, token.access_token);
   };
 
-  const getArtist = async (artistName, token = localStorage.getItem(TOKEN_VAR)) => {
-    let data;
+  const checkSpotifyToken = async (token = localStorage.getItem(TOKEN_VAR)) => {
+    let response = false;
     if (!token) {
       await setTokenLocalStorage();
       spotifyApi.setAccessToken(localStorage.getItem(TOKEN_VAR));
     } else { spotifyApi.setAccessToken(token); }
     try {
-      data = await spotifyApi.searchTracks(artistName, { limit: 6 });
+      await spotifyApi.searchTracks('test');
+      response = true;
     } catch (error) {
       const response = JSON.parse(error.response);
       if (response.error.message === 'The access token expired' && response.error.status === 401) {
         await setTokenLocalStorage();
-        getArtist(artistName);
+        checkSpotifyToken();
+      }
+    }
+    return response;
+  }
+
+
+  // SPOTIFY METHODS
+
+  const getArtist = async artistName => {
+    let data;
+    if (checkSpotifyToken()) {
+      try {
+        data = await spotifyApi.searchTracks(artistName, { limit: 6 });
+      } catch (error) {
+        console.log(error);
       }
     }
     return data;
   };
 
-  const getSongDetail = async slug => {
-    const { REACT_APP_GENIUS_KEY } = process.env;
-    const resp = await fetch(`https://api.genius.com/search?q=${slug}&access_token=${REACT_APP_GENIUS_KEY}`);
-    const data = await resp.json();
-    console.log(data);
-  };
 
   const getAlbumsByArtist = async artistId => {
     let data;
-    try {
-      data = await spotifyApi.getArtistAlbums(artistId);
-    } catch (error) {
-      console.log(error);
+    if (checkSpotifyToken()) {
+      try {
+        data = await spotifyApi.getArtistAlbums(artistId);
+      } catch (error) {
+        console.log(error);
+      }
     }
     return data;
+  };
+
+  // GENIUS API METHODS
+  const getSongDetail = async slug => {
+    const { REACT_APP_GENIUS_KEY } = process.env;
+    const resp = await fetch(`search?q=${slug}&access_token=${REACT_APP_GENIUS_KEY}`);
+    const data = await resp.json();
+    console.log(data);
   };
 
   return { getArtist, getSongDetail, getAlbumsByArtist };
