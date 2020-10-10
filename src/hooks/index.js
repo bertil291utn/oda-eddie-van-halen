@@ -29,6 +29,7 @@ const GetTracksHook = () => {
 
   useEffect(() => {
     API.getArtist('Van Halen').then(data => {
+      console.log(data.tracks.items);
       dispatch({
         type: ACTIONS.INITIALIZE,
         payload: addToObject(data.tracks.items)

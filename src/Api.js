@@ -2,6 +2,7 @@ import SpotifyWebApi from 'spotify-web-api-js';
 
 const API = (() => {
   const TOKEN_VAR = 'temp_token_spotify';
+  const spotifyApi = new SpotifyWebApi();
 
   const getSpotifyToken = async () => {
     const myHeaders = new Headers();
@@ -31,14 +32,13 @@ const API = (() => {
   };
 
   const getArtist = async (artistName, token = localStorage.getItem(TOKEN_VAR)) => {
-    const spotifyApi = new SpotifyWebApi();
+    let data;
     if (!token) {
       await setTokenLocalStorage();
       spotifyApi.setAccessToken(localStorage.getItem(TOKEN_VAR));
     } else { spotifyApi.setAccessToken(token); }
     try {
-      const data = await spotifyApi.searchTracks(artistName, { limit: 6 });
-      return data;
+      data = await spotifyApi.searchTracks(artistName, { limit: 6 });
     } catch (error) {
       const response = JSON.parse(error.response);
       if (response.error.message === 'The access token expired' && response.error.status === 401) {
@@ -46,6 +46,7 @@ const API = (() => {
         getArtist(artistName);
       }
     }
+    return data;
   };
 
   const getSongDetail = async slug => {
@@ -55,7 +56,17 @@ const API = (() => {
     console.log(data);
   };
 
-  return { getArtist, getSongDetail };
+  const getAlbumsByArtist = async artistId => {
+    let data;
+    try {
+      data = await spotifyApi.getArtistAlbums(artistId);
+    } catch (error) {
+      console.log(error);
+    }
+    return data;
+  };
+
+  return { getArtist, getSongDetail, getAlbumsByArtist };
 })();
 
 export default API;
