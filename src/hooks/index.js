@@ -28,7 +28,7 @@ const GetTracksHook = () => {
   const [state, dispatch] = useReducer(trackReducer, store);
 
   useEffect(() => {
-    API.getArtist('Van Halen').then(data => {
+    API.getArtist('artist:Van Halen').then(data => {
       console.log(data.tracks.items);
       dispatch({
         type: ACTIONS.INITIALIZE,
