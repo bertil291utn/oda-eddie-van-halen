@@ -8,9 +8,12 @@
     "@testing-library/user-event": "^7.2.1",
     "genius-api": "^0.4.1",
     "node-genius": "^1.1.0",
+    "prop-types": "^15.7.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-redux": "^7.2.1",
     "react-scripts": "3.4.3",
+    "redux": "^4.0.5",
     "spotify-web-api-js": "^1.5.0"
   },
   "scripts": {

@@ -30,28 +30,23 @@ const API = (() => {
     localStorage.setItem(TOKEN_VAR, token.access_token);
   };
 
-  const getArtist = async (token = localStorage.getItem(TOKEN_VAR)) => {
+  const getArtist = async (artistName, token = localStorage.getItem(TOKEN_VAR)) => {
     const spotifyApi = new SpotifyWebApi();
     if (!token) {
-      console.log('no existe');
       await setTokenLocalStorage();
       spotifyApi.setAccessToken(localStorage.getItem(TOKEN_VAR));
-    } else { console.log('si existe'); spotifyApi.setAccessToken(token); }
+    } else { spotifyApi.setAccessToken(token); }
     try {
-      const data = await spotifyApi.searchTracks('Love');
-      console.log('no esta caduco');
-      console.log(data);
+      const data = await spotifyApi.searchTracks(artistName, { limit: 6 });
+      return data;
     } catch (error) {
       const response = JSON.parse(error.response);
       if (response.error.message === 'The access token expired' && response.error.status === 401) {
-        console.log('caduco');
         await setTokenLocalStorage();
-        getArtist();
+        getArtist(artistName);
       }
     }
   };
-
-
 
   const getSongDetail = async slug => {
     const { REACT_APP_GENIUS_KEY } = process.env;
@@ -64,5 +59,3 @@ const API = (() => {
 })();
 
 export default API;
-
-

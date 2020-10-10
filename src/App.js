@@ -1,13 +1,12 @@
 import React from 'react';
-import API from './Api';
 import './App.css';
+import TrackList from './containers/TrackList';
 
 function App() {
-  API.getArtist();
-  API.getSongDetail('van halen');
+
   return (
     <div className="App">
-      <h1>Hola mundo</h1>
+      <TrackList />
     </div>
   );
 }
