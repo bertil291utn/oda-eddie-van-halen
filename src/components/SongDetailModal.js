@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 const SongDetailModal = props => {
   const { show, onHide, track } = props;
-  const iframeUrl = `https://open.spotify.com/embed/track/${track.id}`
+  const iframeUrl = `https://open.spotify.com/embed/track/${track.id}`;
   return (
     <Modal
       show={show}

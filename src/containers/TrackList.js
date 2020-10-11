@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import SongDetailModal from '../components/SongDetailModal';
 import Track from '../components/Track';
+import EddiesBio from '../components/EddiesBio';
 import GetTracksHook from '../hooks';
 import AlbumFilter from '../components/AlbumFilter';
 
@@ -26,19 +27,15 @@ const TrackList = () => {
   }
 
   const sendDetailTrack = track => {
-    setModalShow(true)
-    setTrack(track)
-  }
+    setModalShow(true);
+    setTrack(track);
+  };
 
   return (
     <>
-      <h3>Eddie Van Halen&#39;s bio</h3>
 
-      <SongDetailModal
-        onHide={() => setModalShow(false)}
-        show={modalShow}
-        track={track}
-      />
+      <EddiesBio />
+
       <AlbumFilter onChange={changeFilter} />
       {
         renderTracks.map(elem => (
@@ -59,6 +56,12 @@ const TrackList = () => {
           </div>
         ))
       }
+
+      <SongDetailModal
+        onHide={() => setModalShow(false)}
+        show={modalShow}
+        track={track}
+      />
     </>
   );
 };
