@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 
 const SongDetailModal = props => {
   const { show, onHide, track } = props;
+  const iframeUrl = `https://open.spotify.com/embed/track/${track.id}`
   return (
     <Modal
       show={show}
@@ -14,14 +15,14 @@ const SongDetailModal = props => {
     >
       <Modal.Header closeButton>
         <Modal.Title id="contained-modal-title-vcenter">
-          Modal heading
+          {track.album}
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <h4>Centered Modal</h4>
-        <p>
-          {JSON.stringify(track)}
-        </p>
+        <img src={track.cover} loading="lazy" alt={track.name} />
+        <p>{track.name}</p>
+        <p>{track.year}</p>
+        <iframe title={track.id} src={iframeUrl} width="500" height="100" frameBorder="0" allowtransparency="true" allow="encrypted-media" />
       </Modal.Body>
     </Modal>
   );
@@ -31,6 +32,7 @@ SongDetailModal.propTypes = {
   show: PropTypes.bool.isRequired,
   track: PropTypes.shape({
     id: PropTypes.string,
+    album: PropTypes.string,
     name: PropTypes.string,
     year: PropTypes.number,
     cover: PropTypes.string,
