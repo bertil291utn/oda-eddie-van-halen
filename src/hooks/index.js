@@ -3,7 +3,7 @@ import ACTIONS from '../actions';
 import API from '../Api';
 import trackReducer from '../reducers/trackReducer';
 
-const VAL_HALEN_ID='2cnMpRsOVqtPMfq7YiFE6K';
+const VAL_HALEN_ID = '2cnMpRsOVqtPMfq7YiFE6K';
 
 const addToObject = (objectArray = []) => {
   const responseArray = []
@@ -37,7 +37,7 @@ const GetTracksHook = () => {
     });
   }, [])
 
-  return state;
+  return [state, dispatch];
 };
 
 export default GetTracksHook;

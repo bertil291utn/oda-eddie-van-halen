@@ -1,10 +1,10 @@
 import SpotifyWebApi from 'spotify-web-api-js';
 
 const TOKEN_VAR = 'temp_token_spotify';
-const spotifyApi = new SpotifyWebApi();
 const GENIUS_BASE_URL = 'https://api.genius.com/'
 
 const API = (() => {
+  const spotifyApi = new SpotifyWebApi();
   // private Spotify token methods
   const getSpotifyToken = async () => {
     const myHeaders = new Headers();
@@ -79,6 +79,21 @@ const API = (() => {
     }
     return data;
   };
+
+  const getTracksByAlbum = albumId => {
+    if (checkSpotifyToken()) {
+      spotifyApi
+        .getAlbum(albumId)
+        .then(data => data.tracks.map(t => t.id))
+        .then(trackIds => spotifyApi.getTracks(trackIds))
+        .then(tracksInfo => {
+          console.log(tracksInfo);
+        })
+        .catch(error => {
+          console.error(error);
+        });
+    }
+  }
 
   // GENIUS API METHODS
   const getSongDetail = async slug => {

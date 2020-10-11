@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 import API from '../Api';
 
-const AlbumFilter = () => {
+const AlbumFilter = ({ onChange }) => {
   const VanHalenId = '2cnMpRsOVqtPMfq7YiFE6K'
   const [albums, setAlbums] = useState([])
   useEffect(() => {
@@ -21,6 +22,7 @@ const AlbumFilter = () => {
       <select
         name="albums"
         id="albums"
+        onChange={onChange}
       >
         <option value="All">All</option>
         {albums.map(album => (
@@ -33,4 +35,8 @@ const AlbumFilter = () => {
   );
 }
 
+AlbumFilter.propTypes = {
+  onChange: PropTypes.func.isRequired
+
+}
 export default AlbumFilter;
