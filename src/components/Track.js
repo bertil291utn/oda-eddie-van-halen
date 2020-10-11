@@ -6,7 +6,7 @@ const track = ({
 }) => (
   <>
     <p>{id}</p>
-    <img src={cover} alt={name} />
+    <img src={cover} loading="lazy" alt={name} />
     <p>{name}</p>
     <p>{year}</p>
 

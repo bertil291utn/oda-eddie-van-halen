@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
-import AlbumFilter from '../components/AlbumFilter';
+import SongDetailModal from '../components/SongDetailModal';
 import Track from '../components/Track';
 import GetTracksHook from '../hooks';
+import AlbumFilter from '../components/AlbumFilter';
 
 const TrackList = () => {
   const [album, setAlbum] = useState('All');
+  const [modalShow, setModalShow] = useState(false);
   const [state, dispatch] = GetTracksHook(album);
   if (!state) return null;
   const { tracks, filterTracks } = state;
@@ -17,24 +19,37 @@ const TrackList = () => {
     });
   };
 
-  let tracksRender = tracks;
+  let renderTracks = tracks;
   if (album !== 'All') {
-    tracksRender = filterTracks;
+    renderTracks = filterTracks;
   }
 
   return (
     <>
       <h3>Eddie Van Halen&#39;s bio</h3>
+
+      <SongDetailModal
+        show={modalShow}
+        onHide={() => setModalShow(false)}
+      />
       <AlbumFilter onChange={changeFilter} />
       {
-        tracksRender.map(elem => (
-          <Track
+        renderTracks.map(elem => (
+          <div
             key={elem.id}
-            id={elem.id}
-            cover={elem.cover}
-            name={elem.name}
-            year={elem.year}
-          />
+            onClick={() => setModalShow(true)}
+            onKeyPress={() => { }}
+            role="button"
+            tabIndex="0"
+          >
+            <Track
+              id={elem.id}
+              cover={elem.cover}
+              name={elem.name}
+              year={elem.year}
+
+            />
+          </div>
         ))
       }
     </>
