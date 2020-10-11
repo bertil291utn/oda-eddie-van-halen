@@ -1,7 +1,7 @@
 import SpotifyWebApi from 'spotify-web-api-js';
 
 const TOKEN_VAR = 'temp_token_spotify';
-const GENIUS_BASE_URL = 'https://api.genius.com/'
+const GENIUS_BASE_URL = 'https://api.genius.com/';
 
 const API = (() => {
   const spotifyApi = new SpotifyWebApi();
@@ -50,14 +50,13 @@ const API = (() => {
       }
     }
     return response;
-  }
-
+  };
 
   // SPOTIFY METHODS
 
   const getArtist = async artistName => {
     let data;
-    if (checkSpotifyToken()) {
+    if (await checkSpotifyToken()) {
       try {
         data = await spotifyApi.searchTracks(artistName, { limit: 6 });
       } catch (error) {
@@ -67,10 +66,11 @@ const API = (() => {
     return data;
   };
 
-
   const getAlbumsByArtist = async artistId => {
     let data;
-    if (checkSpotifyToken()) {
+    // await setAccesToken()
+
+    if (await checkSpotifyToken()) {
       try {
         data = await spotifyApi.getArtistAlbums(artistId);
       } catch (error) {
@@ -80,20 +80,21 @@ const API = (() => {
     return data;
   };
 
-  const getTracksByAlbum = albumId => {
-    if (checkSpotifyToken()) {
-      spotifyApi
-        .getAlbum(albumId)
-        .then(data => data.tracks.map(t => t.id))
-        .then(trackIds => spotifyApi.getTracks(trackIds))
-        .then(tracksInfo => {
-          console.log(tracksInfo);
-        })
-        .catch(error => {
-          console.error(error);
-        });
+  const getTracksByAlbum = async albumId => {
+    let data;
+    // await setAccesToken()
+
+    if (await checkSpotifyToken()) {
+      try {
+        const tracksId = await spotifyApi.getAlbum(albumId);
+        const tracksIdArray = tracksId.tracks.items.map(t => t.id);
+        data = await spotifyApi.getTracks(tracksIdArray);
+      } catch (error) {
+        console.log(error);
+      }
     }
-  }
+    return data;
+  };
 
   // GENIUS API METHODS
   const getSongDetail = async slug => {
@@ -103,7 +104,9 @@ const API = (() => {
     console.log(data);
   };
 
-  return { getArtist, getSongDetail, getAlbumsByArtist };
+  return {
+    getArtist, getSongDetail, getAlbumsByArtist, getTracksByAlbum,
+  };
 })();
 
 export default API;

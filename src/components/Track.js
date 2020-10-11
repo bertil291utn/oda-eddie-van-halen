@@ -1,7 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const track = ({ id, cover, name, year }) => (
+const track = ({
+  id, cover, name, year,
+}) => (
   <>
     <p>{id}</p>
     <img src={cover} alt={name} />

@@ -1,35 +1,33 @@
-import React, { useEffect, useState } from 'react';
-import ACTIONS from '../actions';
+import React, { useState } from 'react';
 import AlbumFilter from '../components/AlbumFilter';
 import Track from '../components/Track';
 import GetTracksHook from '../hooks';
-import API from '../Api'
-
 
 const TrackList = () => {
-  const [state, dispatch] = GetTracksHook();
+  const [album, setAlbum] = useState('All');
+  const [state, dispatch] = GetTracksHook(album);
   if (!state) return null;
-  const { tracks, filter } = state;
+  const { tracks, filterTracks } = state;
   console.log(state);
 
   const changeFilter = e => {
-    const album = e.target.value
+    setAlbum(e.target.value);
     dispatch({
-      type: ACTIONS.FILTER_TRACKS,
-      payload: album
-    })
-  }
+      payload: e.target.value,
+    });
+  };
 
-  useEffect(() => {
-    
-  }, [])
+  let tracksRender = tracks;
+  if (album !== 'All') {
+    tracksRender = filterTracks;
+  }
 
   return (
     <>
-      <h3>Eddie Van Halen's bio</h3>
+      <h3>Eddie Van Halen&#39;s bio</h3>
       <AlbumFilter onChange={changeFilter} />
       {
-        tracks.map(elem => (
+        tracksRender.map(elem => (
           <Track
             key={elem.id}
             id={elem.id}

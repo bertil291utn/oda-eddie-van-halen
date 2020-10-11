@@ -3,7 +3,6 @@ import './App.css';
 import TrackList from './containers/TrackList';
 
 function App() {
-
   return (
     <div className="App">
       <TrackList />

@@ -21,7 +21,7 @@ const initState = () => {
       },
     ],
     filter: 'All',
-  }
+  };
   return store;
 };
 
