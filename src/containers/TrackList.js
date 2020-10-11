@@ -6,6 +6,7 @@ import AlbumFilter from '../components/AlbumFilter';
 
 const TrackList = () => {
   const [album, setAlbum] = useState('All');
+  const [track, setTrack] = useState({});
   const [modalShow, setModalShow] = useState(false);
   const [state, dispatch] = GetTracksHook(album);
   if (!state) return null;
@@ -24,20 +25,26 @@ const TrackList = () => {
     renderTracks = filterTracks;
   }
 
+  const sendDetailTrack = track => {
+    setModalShow(true)
+    setTrack(track)
+  }
+
   return (
     <>
       <h3>Eddie Van Halen&#39;s bio</h3>
 
       <SongDetailModal
-        show={modalShow}
         onHide={() => setModalShow(false)}
+        show={modalShow}
+        track={track}
       />
       <AlbumFilter onChange={changeFilter} />
       {
         renderTracks.map(elem => (
           <div
             key={elem.id}
-            onClick={() => setModalShow(true)}
+            onClick={() => sendDetailTrack(elem)}
             onKeyPress={() => { }}
             role="button"
             tabIndex="0"

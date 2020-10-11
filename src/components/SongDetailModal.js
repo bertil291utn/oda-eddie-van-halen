@@ -3,7 +3,7 @@ import { Modal } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 
 const SongDetailModal = props => {
-  const { show, onHide } = props;
+  const { show, onHide, track } = props;
   return (
     <Modal
       show={show}
@@ -20,9 +20,7 @@ const SongDetailModal = props => {
       <Modal.Body>
         <h4>Centered Modal</h4>
         <p>
-          Cras mattis consectetur purus sit amet fermentum. Cras justo odio,
-          dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac
-          consectetur ac, vestibulum at eros.
+          {JSON.stringify(track)}
         </p>
       </Modal.Body>
     </Modal>
@@ -31,6 +29,12 @@ const SongDetailModal = props => {
 
 SongDetailModal.propTypes = {
   show: PropTypes.bool.isRequired,
+  track: PropTypes.shape({
+    id: PropTypes.string,
+    name: PropTypes.string,
+    year: PropTypes.number,
+    cover: PropTypes.string,
+  }).isRequired,
   onHide: PropTypes.func.isRequired,
 };
 
