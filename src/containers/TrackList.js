@@ -5,8 +5,8 @@ import Track from '../components/Track';
 import EddiesBio from '../components/EddiesBio';
 import GetTracksHook from '../hooks';
 import AlbumFilter from '../components/AlbumFilter';
-import BackgroundImage from '../assets/images/background.jpg'
-import styles from './trackList.module.css'
+import BackgroundImage from '../assets/images/background.jpg';
+import styles from './trackList.module.css';
 
 const TrackList = () => {
   const [album, setAlbum] = useState('All');
@@ -29,7 +29,6 @@ const TrackList = () => {
     renderTracks = filterTracks;
   }
 
-
   const sendDetailTrack = track => {
     setModalShow(true);
     setTrack(track);
@@ -37,9 +36,8 @@ const TrackList = () => {
 
   const stylesTrackList = {
     background: `url(${BackgroundImage})`,
-    
-  }
 
+  };
 
   return (
     <div style={stylesTrackList}>

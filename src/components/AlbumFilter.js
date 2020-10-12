@@ -10,9 +10,7 @@ const AlbumFilter = ({ onChange }) => {
       data => {
         setAlbums(data.items);
       },
-      err => {
-        console.error(err);
-      },
+      err => err,
     );
   }, []);
 
