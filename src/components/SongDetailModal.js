@@ -1,20 +1,33 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Modal } from 'react-bootstrap';
 import PropTypes from 'prop-types';
-import API from '../Api';
+import parse from 'html-react-parser';
+import searchVanHalenBand from '../logic/searchVanHalenBand';
 import sanitizeName from '../logic/sanitizeTrackName';
-
+import API from '../Api';
 
 const SongDetailModal = props => {
   const { show, onHide, track } = props;
+  const [trackgenius, setTrackDetail] = useState(null)
   const iframeUrl = `https://open.spotify.com/embed/track/${track.id}`;
+
   useEffect(() => {
-    console.log(track.name);
-    API.getSongDetail(sanitizeName(track.name)).then(data => {
-      console.log(data);
+    API.getSearchSongRelated(sanitizeName(track.name)).then(data => {
+      if (searchVanHalenBand(data.response.hits).length !== 0) {
+        const songId = searchVanHalenBand(data.response.hits)[0].result.id;
+        API.songDetails(songId).then(data => {
+          setTrackDetail(data.response.song)
+        })
+      }
     })
   }, [track.id])
-
+  console.log(trackgenius);
+  let content = '';
+  let description = '';
+  if (trackgenius) {
+    content = parse(trackgenius.embed_content);
+    if (trackgenius.description.html !== '<p>?</p>') { description = parse(trackgenius.description.html); }
+  }
   return (
     <Modal
       show={show}
@@ -29,6 +42,8 @@ const SongDetailModal = props => {
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
+        {content}
+        {description}
         <img src={track.cover} loading="lazy" alt={track.name} />
         <p>{track.name}</p>
         <p>{track.year}</p>
