@@ -34,62 +34,59 @@ const API = (() => {
   };
 
   const checkSpotifyToken = async (token = localStorage.getItem(TOKEN_VAR)) => {
-    let response = false;
-    if (!token) {
-      await setTokenLocalStorage();
-      spotifyApi.setAccessToken(localStorage.getItem(TOKEN_VAR));
-    } else { spotifyApi.setAccessToken(token); }
+    if (!token) { await setTokenLocalStorage(); }
+    spotifyApi.setAccessToken(localStorage.getItem(TOKEN_VAR));
+    // } else { spotifyApi.setAccessToken(token); }
     try {
       await spotifyApi.searchTracks('test');
-      response = true;
+
     } catch (error) {
       const response = JSON.parse(error.response);
       if (response.error.message === 'The access token expired' && response.error.status === 401) {
         await setTokenLocalStorage();
-        checkSpotifyToken();
+        await checkSpotifyToken();
       }
     }
-    return response;
+
   };
 
   // SPOTIFY METHODS
 
   const getArtist = async artistName => {
     let data;
-    if (await checkSpotifyToken()) {
-      try {
-        data = await spotifyApi.searchTracks(artistName, { limit: 6 });
-      } catch (error) {
-        return error;
-      }
+    await checkSpotifyToken()
+    try {
+      data = await spotifyApi.searchTracks(artistName, { limit: 6 });
+    } catch (error) {
+      return error;
     }
+
     return data;
   };
 
   const getAlbumsByArtist = async artistId => {
     let data;
 
-    if (await checkSpotifyToken()) {
-      try {
-        data = await spotifyApi.getArtistAlbums(artistId);
-      } catch (error) {
-        return error;
-      }
+    await checkSpotifyToken()
+    try {
+      data = await spotifyApi.getArtistAlbums(artistId);
+    } catch (error) {
+      return error;
     }
+
     return data;
   };
 
   const getTracksByAlbum = async albumId => {
     let data;
 
-    if (await checkSpotifyToken()) {
-      try {
-        const tracksId = await spotifyApi.getAlbum(albumId);
-        const tracksIdArray = tracksId.tracks.items.map(t => t.id);
-        data = await spotifyApi.getTracks(tracksIdArray);
-      } catch (error) {
-        return error;
-      }
+    await checkSpotifyToken();
+    try {
+      const tracksId = await spotifyApi.getAlbum(albumId);
+      const tracksIdArray = tracksId.tracks.items.map(t => t.id);
+      data = await spotifyApi.getTracks(tracksIdArray);
+    } catch (error) {
+      return error;
     }
     return data;
   };

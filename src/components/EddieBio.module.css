@@ -1,0 +1,33 @@
+.bio {
+  color: #fff;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  position: relative;
+}
+
+.img {
+  height: 35vw;
+  width: 50vw;
+  max-width: 700px;
+  max-height: 500px;
+}
+
+.info {
+  padding: 1.5rem;
+  /* margin-left: -15vw; */
+  text-align: right;
+}
+
+.bottomRight {
+  position: absolute;
+  padding: 1.5rem;
+  right: 0;
+  bottom: 0;
+}
+
+.verticalLine {
+  border-left: 1px solid #fff;
+  height: 100%;
+  position: absolute;
+  left: 50%;
+}
