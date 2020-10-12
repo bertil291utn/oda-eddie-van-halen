@@ -21,7 +21,6 @@ const SongDetailModal = props => {
       }
     });
   }, [track.id]);
-  console.log(trackgenius);
   let content = '';
   let description = '';
   if (trackgenius) {
