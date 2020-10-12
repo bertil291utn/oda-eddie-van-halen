@@ -5,6 +5,7 @@ import parse from 'html-react-parser';
 import searchVanHalenBand from '../logic/searchVanHalenBand';
 import sanitizeName from '../logic/sanitizeTrackName';
 import API from '../Api';
+import './songdetail.css'
 
 const SongDetailModal = props => {
   const { show, onHide, track } = props;

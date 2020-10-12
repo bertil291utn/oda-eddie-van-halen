@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
-import { Container } from 'react-bootstrap';
+import { Col, Container, Nav, Row, Tab, Tabs } from 'react-bootstrap';
 import SongDetailModal from '../components/SongDetailModal';
 import Track from '../components/Track';
 import EddiesBio from '../components/EddiesBio';
 import GetTracksHook from '../hooks';
 import AlbumFilter from '../components/AlbumFilter';
 import BackgroundImage from '../assets/images/background.jpg';
+import cdCase from '../assets/images/cd-case-1.png';
+import './tracklist.css';
 import styles from './trackList.module.css';
 
 const TrackList = () => {
@@ -36,41 +38,55 @@ const TrackList = () => {
 
   const stylesTrackList = {
     background: `url(${BackgroundImage})`,
+    height: '100vh',
 
   };
+
 
   return (
     <div style={stylesTrackList}>
       <Container fluid="md" className={styles.container}>
 
-        <EddiesBio />
+        <Tabs defaultActiveKey="home" id="uncontrolled-tab-example" className="nav-bar">
+          <Tab eventKey="home" title="Bio">
+            <EddiesBio />
+          </Tab>
+          <Tab eventKey="profile" title="Albums">
+            <div className="albums">
+              <AlbumFilter onChange={changeFilter} />
+              <div className="cover-container">
+                <div className="cover-content">
+                  <img src={cdCase} alt="cd case" />
+                </div>
+              </div>
+              {
+                renderTracks.map(elem => (
+                  <div
+                    key={elem.id}
+                    onClick={() => sendDetailTrack(elem)}
+                    onKeyPress={() => { }}
+                    role="button"
+                    tabIndex="0"
+                  >
+                    <Track
+                      id={elem.id}
+                      cover={elem.cover}
+                      name={elem.name}
+                      year={elem.year}
 
-        <AlbumFilter onChange={changeFilter} />
-        {
-          renderTracks.map(elem => (
-            <div
-              key={elem.id}
-              onClick={() => sendDetailTrack(elem)}
-              onKeyPress={() => { }}
-              role="button"
-              tabIndex="0"
-            >
-              <Track
-                id={elem.id}
-                cover={elem.cover}
-                name={elem.name}
-                year={elem.year}
+                    />
+                  </div>
+                ))
+              }
 
+              <SongDetailModal
+                onHide={() => setModalShow(false)}
+                show={modalShow}
+                track={track}
               />
             </div>
-          ))
-        }
-
-        <SongDetailModal
-          onHide={() => setModalShow(false)}
-          show={modalShow}
-          track={track}
-        />
+          </Tab>
+        </Tabs>
       </Container>
     </div>
   );

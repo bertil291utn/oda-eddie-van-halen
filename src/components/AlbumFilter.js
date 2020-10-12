@@ -16,7 +16,6 @@ const AlbumFilter = ({ onChange }) => {
 
   return (
     <label htmlFor="albums">
-      Albums
       <select
         name="albums"
         id="albums"
