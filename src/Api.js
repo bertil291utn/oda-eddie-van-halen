@@ -95,14 +95,20 @@ const API = (() => {
   };
 
   // GENIUS API METHODS
-  const getSongDetail = async slug => {
+  const getSearchSongRelated = async slug => {
     const { REACT_APP_GENIUS_KEY } = process.env;
     const resp = await fetch(`${GENIUS_BASE_URL}search?q=${slug}&access_token=${REACT_APP_GENIUS_KEY}`);
     return resp.json();
   };
 
+  const songDetails = async songId => {
+    const { REACT_APP_GENIUS_KEY } = process.env;
+    const resp = await fetch(`${GENIUS_BASE_URL}songs/${songId}?text_format=html&access_token=${REACT_APP_GENIUS_KEY}`);
+    return resp.json();
+  };
+
   return {
-    getArtist, getSongDetail, getAlbumsByArtist, getTracksByAlbum,
+    getArtist, getSearchSongRelated, getAlbumsByArtist, getTracksByAlbum, checkSpotifyToken, getSpotifyToken, songDetails
   };
 })();
 
