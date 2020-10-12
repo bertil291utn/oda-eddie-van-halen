@@ -8,7 +8,7 @@ import API from '../Api';
 
 const SongDetailModal = props => {
   const { show, onHide, track } = props;
-  const [trackgenius, setTrackDetail] = useState(null)
+  const [trackgenius, setTrackDetail] = useState(null);
   const iframeUrl = `https://open.spotify.com/embed/track/${track.id}`;
 
   useEffect(() => {
@@ -16,11 +16,11 @@ const SongDetailModal = props => {
       if (searchVanHalenBand(data.response.hits).length !== 0) {
         const songId = searchVanHalenBand(data.response.hits)[0].result.id;
         API.songDetails(songId).then(data => {
-          setTrackDetail(data.response.song)
-        })
+          setTrackDetail(data.response.song);
+        });
       }
-    })
-  }, [track.id])
+    });
+  }, [track.id]);
   console.log(trackgenius);
   let content = '';
   let description = '';

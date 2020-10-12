@@ -1,5 +1,5 @@
 const sanitizeName = (trackName = 'van halen') => trackName
   .replace(/-.*/, '')
-  .trim()
+  .trim();
 
 export default sanitizeName;

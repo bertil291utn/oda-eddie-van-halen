@@ -108,7 +108,13 @@ const API = (() => {
   };
 
   return {
-    getArtist, getSearchSongRelated, getAlbumsByArtist, getTracksByAlbum, checkSpotifyToken, getSpotifyToken, songDetails
+    getArtist,
+    getSearchSongRelated,
+    getAlbumsByArtist,
+    getTracksByAlbum,
+    checkSpotifyToken,
+    getSpotifyToken,
+    songDetails,
   };
 })();
 
