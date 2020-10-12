@@ -60,7 +60,7 @@ const API = (() => {
       try {
         data = await spotifyApi.searchTracks(artistName, { limit: 6 });
       } catch (error) {
-        console.log(error);
+        return error;
       }
     }
     return data;
@@ -68,13 +68,12 @@ const API = (() => {
 
   const getAlbumsByArtist = async artistId => {
     let data;
-    // await setAccesToken()
 
     if (await checkSpotifyToken()) {
       try {
         data = await spotifyApi.getArtistAlbums(artistId);
       } catch (error) {
-        console.log(error);
+        return error;
       }
     }
     return data;
@@ -82,7 +81,6 @@ const API = (() => {
 
   const getTracksByAlbum = async albumId => {
     let data;
-    // await setAccesToken()
 
     if (await checkSpotifyToken()) {
       try {
@@ -90,7 +88,7 @@ const API = (() => {
         const tracksIdArray = tracksId.tracks.items.map(t => t.id);
         data = await spotifyApi.getTracks(tracksIdArray);
       } catch (error) {
-        console.log(error);
+        return error;
       }
     }
     return data;
@@ -100,8 +98,7 @@ const API = (() => {
   const getSongDetail = async slug => {
     const { REACT_APP_GENIUS_KEY } = process.env;
     const resp = await fetch(`${GENIUS_BASE_URL}search?q=${slug}&access_token=${REACT_APP_GENIUS_KEY}`);
-    const data = await resp.json();
-    console.log(data);
+    return resp.json();
   };
 
   return {
