@@ -1,4 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Squada+One&display=swap');
+
+.titleFont {
+  font-family: 'Squada One', cursive;
+}
+
 .bio {
+  font-family: 'Playfair Display', serif;
   color: #fff;
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -13,16 +21,18 @@
 }
 
 .info {
+  font-size: 1.25vw;
+  margin-left: -1vw;
   padding: 1.5rem;
-  /* margin-left: -15vw; */
   text-align: right;
 }
 
 .bottomRight {
-  position: absolute;
-  padding: 1.5rem;
-  right: 0;
   bottom: 0;
+  font-family: 'Squada One', cursive;
+  position: absolute;
+  padding-right: 1.5rem;
+  right: 0;
 }
 
 .verticalLine {
@@ -30,4 +40,18 @@
   height: 100%;
   position: absolute;
   left: 50%;
+}
+
+.caseCd {
+  position: absolute;
+  width: 103%;
+  height: 109%;
+  margin-top: -1.5vw;
+  margin-left: -1.5vw;
+}
+
+@media screen and (min-width: 1600px) {
+  .info {
+    font-size: 19px;
+  }
 }

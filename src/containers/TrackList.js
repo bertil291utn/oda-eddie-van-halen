@@ -6,7 +6,7 @@ import EddiesBio from '../components/EddiesBio';
 import GetTracksHook from '../hooks';
 import AlbumFilter from '../components/AlbumFilter';
 import BackgroundImage from '../assets/images/background.jpg'
-import './trackList.css'
+import styles from './trackList.module.css'
 
 const TrackList = () => {
   const [album, setAlbum] = useState('All');
@@ -43,7 +43,7 @@ const TrackList = () => {
 
   return (
     <div style={stylesTrackList}>
-      <Container fluid="md">
+      <Container fluid="md" className={styles.container}>
 
         <EddiesBio />
 
