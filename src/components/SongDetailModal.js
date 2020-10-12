@@ -1,10 +1,20 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Modal } from 'react-bootstrap';
 import PropTypes from 'prop-types';
+import API from '../Api';
+import sanitizeName from '../logic/sanitizeTrackName';
+
 
 const SongDetailModal = props => {
   const { show, onHide, track } = props;
   const iframeUrl = `https://open.spotify.com/embed/track/${track.id}`;
+  useEffect(() => {
+    console.log(track.name);
+    API.getSongDetail(sanitizeName(track.name)).then(data => {
+      console.log(data);
+    })
+  }, [track.id])
+
   return (
     <Modal
       show={show}
