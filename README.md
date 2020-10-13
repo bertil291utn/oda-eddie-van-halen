@@ -73,11 +73,12 @@ Deployed with [Heroku](https://www.heroku.com/)
 - LinkedIn: [Bertil Tandayamo](http://bit.ly/bertil_linkedin)
 
 ## Issues
-- The application is only avalable for 1024 to up devices.
+- The application is only available from 1024px to up screen devices
+- Still not working on Firefox a property with `grid-inline`
 
 ## Improvements
 - Make a RWD page
-- Fix API generate token 
+- Fix Spotify API automatically generate token function  
 
 
 ## Acknowledgment
