@@ -42,7 +42,6 @@ const GetTracksHook = album => {
     let newAbumName = album;
     if (album === 'All') { newAbumName = DEFAULT_ALBUM_ID; }
     API.getTracksByAlbum(newAbumName).then(data => {
-      console.log(data);
       dispatch({
         type: ACTIONS.FILTER_TRACKS,
         payload: addToObject(data.tracks),

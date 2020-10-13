@@ -32,21 +32,20 @@ const SongDetailModal = props => {
   const lectureFont = {
     fontFamily: 'Playfair Display, serif',
     fontSize: '0.75rem',
-  }
+  };
 
   const titleFont = {
     fontFamily: 'Squada One, cursive',
-  }
+  };
 
   const iframeStyle = {
     width: '100%',
-  }
-
+  };
 
   const footLecture = {
     fontFamily: 'Squada One, cursive',
     fontSize: '0.9rem',
-  }
+  };
 
   return (
     <Modal

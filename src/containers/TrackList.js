@@ -20,7 +20,6 @@ const TrackList = () => {
   const [state, dispatch] = GetTracksHook(album);
   if (!state) return null;
   const { tracks, filterTracks } = state;
-  console.log(state);
 
   const changeFilter = e => {
     setAlbum(e.target.value);
@@ -68,11 +67,11 @@ const TrackList = () => {
 
   const durationStyle = {
     color: 'var(--secondary-color)',
-  }
+  };
 
   const fontWeight = {
     fontWeight: '500',
-  }
+  };
 
   return (
     <div style={stylesTrackList}>
@@ -86,7 +85,7 @@ const TrackList = () => {
             <div className="albums">
               <div className="cover-filter">
                 <div className="cover-container">
-                  <div className="cover-content" >
+                  <div className="cover-content">
                     <img src={cdCase2} alt="cd case" id="cd-1" style={cdCaseStyle} />
                     {renderTracks.length !== 0 && (<img src={renderTracks[0].cover} alt="cover cd" style={coverStyle} />)}
                     <div className="background-cover" style={cdBackground} />
