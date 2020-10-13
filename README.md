@@ -1,68 +1,105 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-<span>Photo by <a href="https://unsplash.com/@anniespratt?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Annie Spratt</a> on <a href="https://unsplash.com/s/photos/rusty-bachground-fabric?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></span>
-## Available Scripts
+# Tribute to Eddie Van Halen
 
-In the project directory, you can run:
+### This is project to tribute Eddie Van Halen all music career with his band. Last week He passed away and I decided to go with this project. RIP
 
-### `npm start`
+[<div align="center"><img src="https://user-images.githubusercontent.com/24902525/95813875-7cbd8400-0cde-11eb-9c08-19542eb66ad4.png" alt="image" width="800" /></div>](https://bookstore-apk.herokuapp.com/)
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+*Click on the image to go to live demo*
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+## Built With 
 
-### `npm test`
+- Node.js
+- React
+- Redux
+- CSS
+- ES6
+- Spotify [API](https://developer.spotify.com/console/)
+- Spotify web [library](https://www.npmjs.com/package/spotify-web-api-js)
+- Genius [API](https://docs.genius.com/#/) 
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Getting Started
 
-### `npm run build`
+In order to start with this project you need the next:
+### Download repository
+- Get a copy of this project [this repository :blue_book:](https://github.com/bertil291utn/oda-eddie-van-halen.git)
+### Generate access tokens
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+**Spotify**
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+- Go to the developer Spotify API endpoint [page](https://developer.spotify.com/console/)
+- Create an app you get
+- Fill the form and submit this one
+- At the end you will see two keys (CLIENT_ID and SECRET_ID)
+- On this project create a `.env` file 
+- Create a key name called `REACT_APP_CLIENT_ID` and `REACT_APP_CLIENT_SECRET`
+- Copy your keys form the Spotify web page dashboard
+- Paste on each variable respectively 
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+***Remember:** Spotify key has a limit time, however the app generates a token when the last is not invalid*
 
-### `npm run eject`
+This project was developed with the [Spotify library](https://www.npmjs.com/package/spotify-web-api-js), go check it out this is the documentation 
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+**Genius**
+- Go to genius api [documentation](https://docs.genius.com/#/search-h2)
+- If you don't have an account, create one
+- Click "manage client link"
+- Create new api client
+- Click generate access token 
+- Copy the generated access token 
+- On `.env` file add another key name called `REACT_APP_GENIUS_KEY` and paste the key
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Run the project 
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+- Runs the app in the development mode.<br />
+  ```
+  npm start
+  ```
+- Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- Follow the video instructions 
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## Learn More
+## Deployment
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Deployed with [GitHub pages](https://pages.github.com/)  
 
-To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
+## Authors
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+👤 **Bertil Tandayamo**
 
-### Analyzing the Bundle Size
+- Github: [@bertil291utn](https://github.com/bertil291utn)
+- Twitter: [@btandayamo](https://twitter.com/batandayamo)
+- LinkedIn: [Bertil Tandayamo](http://bit.ly/bertil_linkedin)
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+## Issues
+- The application is only avalable for 1024 to up devices.
 
-### Making a Progressive Web App
+## Improvements
+- Make a RWD page
+- Fix API generate token 
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
 
-### Advanced Configuration
+## Acknowledgment
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+Inspired design by [Heroink](https://www.behance.net/heroink), [Edoardo Benaglia](https://www.behance.net/gallery/75928301/Album-packaging-Lost-Breed?tracking_source=search_projects_recommended%7Ccd%20album%20packaging) and
+[Petr Kudlacek](https://www.behance.net/gallery/47526119/Nasilnik-EP-cover?tracking_source=search_projects_recommended%7Ccd%20cover)  
 
-### Deployment
+## 🤝 Contributing
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
+Contributions, issues, and feature requests are welcome!
 
-### `npm run build` fails to minify
+## Show your support
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+If you got until here, show your love hitting the ⭐️ button, I'd appreciate it.
+
+**To crete a pull request:**
+- Clone this project and create another branch
+- Make the required changes 
+- Send a pull request from the new branch  
+
+## 📝 License
+
+This project is [MIT](LICENSE) licensed.
+
+
+
