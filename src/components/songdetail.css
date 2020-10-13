@@ -1,3 +1,4 @@
-a {
-  color: #007bff !important;
+.contenido a {
+  color: var(--primary-color) !important;
 }
+

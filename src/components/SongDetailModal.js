@@ -5,7 +5,7 @@ import parse from 'html-react-parser';
 import searchVanHalenBand from '../logic/searchVanHalenBand';
 import sanitizeName from '../logic/sanitizeTrackName';
 import API from '../Api';
-import './songdetail.css'
+import './songdetail.css';
 
 const SongDetailModal = props => {
   const { show, onHide, track } = props;
@@ -42,8 +42,10 @@ const SongDetailModal = props => {
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        {content}
-        {description}
+        <div className="contenido">
+          {content}
+          {description}
+        </div>
         <img src={track.cover} loading="lazy" alt={track.name} />
         <p>{track.name}</p>
         <p>{track.year}</p>

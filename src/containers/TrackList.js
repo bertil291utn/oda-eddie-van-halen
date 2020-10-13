@@ -1,14 +1,17 @@
+/* eslint-disable no-return-assign */
+/* eslint-disable no-param-reassign */
 import React, { useState } from 'react';
-import { Col, Container, Nav, Row, Tab, Tabs } from 'react-bootstrap';
+import { Container, Tab, Tabs } from 'react-bootstrap';
 import SongDetailModal from '../components/SongDetailModal';
-import Track from '../components/Track';
 import EddiesBio from '../components/EddiesBio';
 import GetTracksHook from '../hooks';
 import AlbumFilter from '../components/AlbumFilter';
 import BackgroundImage from '../assets/images/background.jpg';
-import cdCase from '../assets/images/cd-case-1.png';
+import cdBackgroundImage from '../assets/images/cd2-backg.png';
+import cdCase2 from '../assets/images/cd-case-2.png';
 import './tracklist.css';
 import styles from './trackList.module.css';
+import miliToFormat from '../logic/mstoseg';
 
 const TrackList = () => {
   const [album, setAlbum] = useState('All');
@@ -42,6 +45,34 @@ const TrackList = () => {
 
   };
 
+  const cdBackground = {
+    background: `url(${cdBackgroundImage})`,
+  };
+
+  const coverStyle = {
+    position: 'absolute',
+    left: '0',
+    height: '100%',
+  };
+
+  const cdCaseStyle = {
+    height: '110%',
+    left: '0',
+    marginLeft: '-1.5vw',
+    marginTop: '-1.6vw',
+    position: 'absolute',
+    top: '0',
+    width: '66vw',
+    maxWidth: '1100px',
+  };
+
+  const durationStyle = {
+    color: 'var(--secondary-color)',
+  }
+
+  const fontWeight = {
+    fontWeight: '500',
+  }
 
   return (
     <div style={stylesTrackList}>
@@ -53,32 +84,35 @@ const TrackList = () => {
           </Tab>
           <Tab eventKey="profile" title="Albums">
             <div className="albums">
-              <AlbumFilter onChange={changeFilter} />
-              <div className="cover-container">
-                <div className="cover-content">
-                  <img src={cdCase} alt="cd case" />
-                </div>
-              </div>
-              {
-                renderTracks.map(elem => (
-                  <div
-                    key={elem.id}
-                    onClick={() => sendDetailTrack(elem)}
-                    onKeyPress={() => { }}
-                    role="button"
-                    tabIndex="0"
-                  >
-                    <Track
-                      id={elem.id}
-                      cover={elem.cover}
-                      name={elem.name}
-                      year={elem.year}
-
-                    />
+              <div className="cover-filter">
+                <div className="cover-container">
+                  <div className="cover-content" >
+                    <img src={cdCase2} alt="cd case" id="cd-1" style={cdCaseStyle} />
+                    {renderTracks.length !== 0 && (<img src={renderTracks[0].cover} alt="cover cd" style={coverStyle} />)}
+                    <div className="background-cover" style={cdBackground} />
+                    <div className="tracks-detail">
+                      {
+                        renderTracks.map((elem, index) => (
+                          <div
+                            key={elem.id}
+                            onClick={() => sendDetailTrack(elem)}
+                            onKeyPress={() => { }}
+                            role="button"
+                            tabIndex="0"
+                          >
+                            <div className="track">
+                              <div style={fontWeight}>{index += 1}</div>
+                              <div style={fontWeight}>{elem.name}</div>
+                              <div style={durationStyle}>{miliToFormat(elem.duration)}</div>
+                            </div>
+                          </div>
+                        ))
+                      }
+                    </div>
                   </div>
-                ))
-              }
-
+                </div>
+                <AlbumFilter onChange={changeFilter} />
+              </div>
               <SongDetailModal
                 onHide={() => setModalShow(false)}
                 show={modalShow}

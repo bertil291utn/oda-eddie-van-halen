@@ -14,14 +14,18 @@ const AlbumFilter = ({ onChange }) => {
     );
   }, []);
 
+  const labelStyle = {
+    marginTop: '2rem',
+  };
+
   return (
-    <label htmlFor="albums">
+    <label htmlFor="albums" style={labelStyle}>
       <select
         name="albums"
         id="albums"
         onChange={onChange}
       >
-        <option value="All">Top Tracks</option>
+        <option value="All">Top Album</option>
         {albums.map(album => (
           <option key={album.id} value={album.id}>
             {album.name}

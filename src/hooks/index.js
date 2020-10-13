@@ -15,6 +15,7 @@ const addToObject = (objectArray = []) => {
       album: elem.album.name,
       year: new Date(elem.album.release_date).getFullYear(),
       cover: elem.album.images[1].url,
+      duration: elem.duration_ms,
     };
     responseArray.push(response);
   });
@@ -41,6 +42,7 @@ const GetTracksHook = album => {
     let newAbumName = album;
     if (album === 'All') { newAbumName = DEFAULT_ALBUM_ID; }
     API.getTracksByAlbum(newAbumName).then(data => {
+      console.log(data);
       dispatch({
         type: ACTIONS.FILTER_TRACKS,
         payload: addToObject(data.tracks),
