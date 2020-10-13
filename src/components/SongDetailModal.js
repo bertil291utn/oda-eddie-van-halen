@@ -28,6 +28,26 @@ const SongDetailModal = props => {
     content = parse(trackgenius.embed_content);
     if (trackgenius.description.html !== '<p>?</p>') { description = parse(trackgenius.description.html); }
   }
+
+  const lectureFont = {
+    fontFamily: 'Playfair Display, serif',
+    fontSize: '0.75rem',
+  }
+
+  const titleFont = {
+    fontFamily: 'Squada One, cursive',
+  }
+
+  const iframeStyle = {
+    width: '100%',
+  }
+
+
+  const footLecture = {
+    fontFamily: 'Squada One, cursive',
+    fontSize: '0.9rem',
+  }
+
   return (
     <Modal
       show={show}
@@ -37,19 +57,18 @@ const SongDetailModal = props => {
       centered
     >
       <Modal.Header closeButton>
-        <Modal.Title id="contained-modal-title-vcenter">
+        <Modal.Title id="contained-modal-title-vcenter" style={titleFont}>
           {track.album}
         </Modal.Title>
       </Modal.Header>
-      <Modal.Body>
+      <Modal.Body style={lectureFont}>
         <div className="contenido">
-          {content}
           {description}
+          <iframe title={track.id} src={iframeUrl} height="100" frameBorder="0" allowtransparency="true" allow="encrypted-media" style={iframeStyle} />
+          <div style={footLecture}>
+            {content}
+          </div>
         </div>
-        <img src={track.cover} loading="lazy" alt={track.name} />
-        <p>{track.name}</p>
-        <p>{track.year}</p>
-        <iframe title={track.id} src={iframeUrl} width="500" height="100" frameBorder="0" allowtransparency="true" allow="encrypted-media" />
       </Modal.Body>
     </Modal>
   );
