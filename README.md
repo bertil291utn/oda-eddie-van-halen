@@ -2,7 +2,7 @@
 
 ### This is project to tribute Eddie Van Halen all music career with his band. Last week He passed away and I decided to go with this project. RIP
 
-[<div align="center"><img src="https://user-images.githubusercontent.com/24902525/95813875-7cbd8400-0cde-11eb-9c08-19542eb66ad4.png" alt="image" width="800" /></div>](https://bertil291utn.github.io/oda-eddie-van-halen/)
+[<div align="center"><img src="https://user-images.githubusercontent.com/24902525/95813875-7cbd8400-0cde-11eb-9c08-19542eb66ad4.png" alt="image" width="800" /></div>](https://tribute-to-eddie-v-halen.herokuapp.com/)
 
 *Click on the image to go to live demo*
 
@@ -60,7 +60,7 @@ This project was developed with the [Spotify library](https://www.npmjs.com/pack
 
 ## Deployment
 
-Deployed with [GitHub pages](https://pages.github.com/)  
+Deployed with [Heroku](https://www.heroku.com/)  
 
 
 ## Authors
