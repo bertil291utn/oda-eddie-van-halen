@@ -15,12 +15,13 @@ const SongDetailModal = props => {
   const [trackgenius, setTrackDetail] = useState(null);
   const { id, album, name } = track;
   const iframeUrl = `https://open.spotify.com/embed/track/${id}`;
-  const { lectureFont,
+  const {
+    lectureFont,
     descriptionStyle,
     titleFont,
     iframeStyle,
-    footLecture,backgroundColor
-   } = styles
+    footLecture, backgroundColor,
+  } = styles;
 
   useEffect(() => {
     API.getSearchSongRelated(logicMethods.sanitizeName(name)).then(data => {
@@ -38,9 +39,6 @@ const SongDetailModal = props => {
     content = parse(trackgenius.embed_content);
     if (trackgenius.description.html !== '<p>?</p>') { description = parse(trackgenius.description.html); }
   }
-
-
- 
 
   return (
     <Container fluid="md" className={backgroundColor}>

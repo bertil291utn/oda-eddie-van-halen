@@ -12,12 +12,14 @@ const TrackList = () => {
   const [album, setAlbum] = useState('All');
   const [state, dispatch] = GetTracksHook(album);
   const { miliToFormat, filterLimitedTracks } = logicMethods;
-  const { cdBackground,
+  const {
+    cdBackground,
     coverStyle,
     cdCaseStyle,
     durationStyle,
     fontWeight,
-    container } = styles
+    container,
+  } = styles;
   let trackNumber = 0;
 
   if (!state) return null;
@@ -34,7 +36,6 @@ const TrackList = () => {
   if (album !== 'All') {
     renderTracks = filterLimitedTracks(filterTracks, 10);
   }
-
 
   return (
     <Container fluid="md" className={container}>

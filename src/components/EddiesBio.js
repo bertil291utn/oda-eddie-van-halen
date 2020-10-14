@@ -5,10 +5,8 @@ import cdCase2 from '../assets/images/cd-case-2.png';
 import styles from './EddieBio.module.css';
 
 const EddiesBio = () => {
-
-
   const {
-    info, img, bottomRight, bio, caseCd, titleFont, bioStyle, coverCdLink
+    info, img, bottomRight, bio, caseCd, titleFont, bioStyle, coverCdLink,
   } = styles;
 
   return (

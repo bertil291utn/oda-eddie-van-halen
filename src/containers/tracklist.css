@@ -18,13 +18,6 @@
   width: 63vw;
 }
 
-#cd-1 {
-}
-
-.background-cover {
-  
-}
-
 .track {
   display: grid;
   grid-template-columns: 1.25vw 22vw 1fr;
