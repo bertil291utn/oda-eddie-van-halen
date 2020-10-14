@@ -1,12 +1,9 @@
-/* eslint-disable no-return-assign */
-/* eslint-disable no-param-reassign */
 import React, { useState } from 'react';
 import { Container, Tab, Tabs } from 'react-bootstrap';
 import SongDetailModal from '../components/SongDetailModal';
 import EddiesBio from '../components/EddiesBio';
 import GetTracksHook from '../hooks';
 import AlbumFilter from '../components/AlbumFilter';
-import BackgroundImage from '../assets/images/background.jpg';
 import cdBackgroundImage from '../assets/images/cd2-backg.png';
 import cdCase2 from '../assets/images/cd-case-2.png';
 import './tracklist.css';
@@ -18,6 +15,8 @@ const TrackList = () => {
   const [track, setTrack] = useState({});
   const [modalShow, setModalShow] = useState(false);
   const [state, dispatch] = GetTracksHook(album);
+  let trackNumber = 0;
+
   if (!state) return null;
   const { tracks, filterTracks } = state;
 
@@ -38,11 +37,7 @@ const TrackList = () => {
     setTrack(track);
   };
 
-  const stylesTrackList = {
-    background: `url(${BackgroundImage})`,
-    height: '100vh',
 
-  };
 
   const cdBackground = {
     background: `url(${cdBackgroundImage})`,
@@ -74,54 +69,47 @@ const TrackList = () => {
   };
 
   return (
-    <div style={stylesTrackList}>
-      <Container fluid="md" className={styles.container}>
-
-        <Tabs defaultActiveKey="home" id="uncontrolled-tab-example" className="nav-bar">
-          <Tab eventKey="home" title="Bio">
-            <EddiesBio />
-          </Tab>
-          <Tab eventKey="profile" title="Albums">
-            <div className="albums">
-              <div className="cover-filter">
-                <div className="cover-container">
-                  <div className="cover-content">
-                    <img src={cdCase2} alt="cd case" id="cd-1" style={cdCaseStyle} />
-                    {renderTracks.length !== 0 && (<img src={renderTracks[0].cover} alt="cover cd" style={coverStyle} />)}
-                    <div className="background-cover" style={cdBackground} />
-                    <div className="tracks-detail">
-                      {
-                        renderTracks.map((elem, index) => (
-                          <div
-                            key={elem.id}
-                            onClick={() => sendDetailTrack(elem)}
-                            onKeyPress={() => { }}
-                            role="button"
-                            tabIndex="0"
-                          >
-                            <div className="track">
-                              <div style={fontWeight}>{index += 1}</div>
-                              <div style={fontWeight}>{elem.name}</div>
-                              <div style={durationStyle}>{miliToFormat(elem.duration)}</div>
-                            </div>
-                          </div>
-                        ))
-                      }
-                    </div>
-                  </div>
-                </div>
-                <AlbumFilter onChange={changeFilter} />
+    <Container fluid="md" className={styles.container}>
+      <div className="albums">
+        <div className="cover-filter">
+          <div className="cover-container">
+            <div className="cover-content">
+              <img src={cdCase2} alt="cd case" id="cd-1" style={cdCaseStyle} />
+              {renderTracks.length !== 0 && (<img src={renderTracks[0].cover} alt="cover cd" style={coverStyle} />)}
+              <div className="background-cover" style={cdBackground} />
+              <div className="tracks-detail">
+                {
+                  renderTracks.map(elem => {
+                    trackNumber += 1;
+                    return (
+                      <div
+                        key={elem.id}
+                        onClick={() => sendDetailTrack(elem)}
+                        onKeyPress={() => { }}
+                        role="button"
+                        tabIndex="0"
+                      >
+                        <div className="track">
+                          <div style={fontWeight}>{trackNumber}</div>
+                          <div style={fontWeight}>{elem.name}</div>
+                          <div style={durationStyle}>{miliToFormat(elem.duration)}</div>
+                        </div>
+                      </div>
+                    );
+                  })
+                }
               </div>
-              <SongDetailModal
-                onHide={() => setModalShow(false)}
-                show={modalShow}
-                track={track}
-              />
             </div>
-          </Tab>
-        </Tabs>
-      </Container>
-    </div>
+          </div>
+          <AlbumFilter onChange={changeFilter} />
+        </div>
+        <SongDetailModal
+          onHide={() => setModalShow(false)}
+          show={modalShow}
+          track={track}
+        />
+      </div>
+    </Container>
   );
 };
 
