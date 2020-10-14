@@ -1,18 +1,18 @@
 import React, { useState } from 'react';
 import { Container } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import SongDetailModal from '../components/SongDetailModal';
 import GetTracksHook from '../hooks';
 import AlbumFilter from '../components/AlbumFilter';
 import cdBackgroundImage from '../assets/images/cd2-backg.png';
 import cdCase2 from '../assets/images/cd-case-2.png';
 import './tracklist.css';
 import styles from './trackList.module.css';
-import miliToFormat from '../logic/mstoseg';
+import logicMethods from '../logic/logicMethods';
+
+
 
 const TrackList = () => {
   const [album, setAlbum] = useState('All');
-  const [track, setTrack] = useState({});
   const [state, dispatch] = GetTracksHook(album);
   let trackNumber = 0;
 
@@ -31,9 +31,6 @@ const TrackList = () => {
     renderTracks = filterTracks;
   }
 
-  const sendDetailTrack = track => {
-    setTrack(track);
-  };
 
   const cdBackground = {
     background: `url(${cdBackgroundImage})`,
@@ -88,7 +85,7 @@ const TrackList = () => {
                         <div className="track">
                           <div style={fontWeight}>{trackNumber}</div>
                           <div style={fontWeight}>{elem.name}</div>
-                          <div style={durationStyle}>{miliToFormat(elem.duration)}</div>
+                          <div style={durationStyle}>{logicMethods.miliToFormat(elem.duration)}</div>
                         </div>
                       </Link>
                     );
@@ -99,9 +96,6 @@ const TrackList = () => {
           </div>
           <AlbumFilter onChange={changeFilter} />
         </div>
-        {/* <SongDetailModal
-          track={track}
-        /> */}
       </div>
     </Container>
   );

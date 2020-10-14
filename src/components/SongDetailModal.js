@@ -2,8 +2,7 @@ import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { Container } from 'react-bootstrap';
 import parse from 'html-react-parser';
-import searchVanHalenBand from '../logic/searchVanHalenBand';
-import sanitizeName from '../logic/sanitizeTrackName';
+import logicMethods from '../logic/logicMethods';
 import BackgroundCover from '../assets/images/img-noise-1000x800.png';
 import API from '../Api';
 import './songdetail.css';
@@ -18,9 +17,9 @@ const SongDetailModal = props => {
   const iframeUrl = `https://open.spotify.com/embed/track/${id}`;
 
   useEffect(() => {
-    API.getSearchSongRelated(sanitizeName(name)).then(data => {
-      if (searchVanHalenBand(data.response.hits).length !== 0) {
-        const songId = searchVanHalenBand(data.response.hits)[0].result.id;
+    API.getSearchSongRelated(logicMethods.sanitizeName(name)).then(data => {
+      if (logicMethods.searchVanHalenBand(data.response.hits).length !== 0) {
+        const songId = logicMethods.searchVanHalenBand(data.response.hits)[0].result.id;
         API.songDetails(songId).then(data => {
           setTrackDetail(data.response.song);
         });
@@ -85,13 +84,16 @@ const SongDetailModal = props => {
 };
 
 SongDetailModal.propTypes = {
-  track: PropTypes.shape({
-    id: PropTypes.string,
-    album: PropTypes.string,
-    name: PropTypes.string,
-    year: PropTypes.number,
-    cover: PropTypes.string,
-  }).isRequired,
+  id: PropTypes.string,
+  album: PropTypes.string,
+  name: PropTypes.string,
 };
+
+SongDetailModal.defaultProps = {
+  id: '',
+  album: '',
+  name: '',
+
+}
 
 export default SongDetailModal;
