@@ -1,8 +1,8 @@
 # Tribute to Eddie Van Halen
 
-### This is project to tribute Eddie Van Halen all music career with his band. Last week He passed away and I decided to go with this project. RIP
+### This is a project to tribute Eddie Van Halen's all music career with his band. Last week He passed away and I decided to go with this project. RIP
 
-[<div align="center"><img src="https://user-images.githubusercontent.com/24902525/95813875-7cbd8400-0cde-11eb-9c08-19542eb66ad4.png" alt="image" width="800" /></div>](https://tribute-to-eddie-v-halen.herokuapp.com/)
+[<div align="center"><img src="https://user-images.githubusercontent.com/24902525/96033256-78e84980-0e25-11eb-8356-6dc53710f0be.png" alt="image" width="800" /></div>](https://tribute-to-eddie-v-halen.herokuapp.com/)
 
 *Click on the image to go to live demo*
 ## Video explanation
