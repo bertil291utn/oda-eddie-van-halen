@@ -1,0 +1,6 @@
+const ACTIONS = {
+  FILTER_TRACKS: 'FILTER_TRACKS',
+  INITIALIZE: 'INITIALIZE',
+};
+
+export default ACTIONS;
