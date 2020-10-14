@@ -4,6 +4,7 @@ import { Container } from 'react-bootstrap';
 import parse from 'html-react-parser';
 import searchVanHalenBand from '../logic/searchVanHalenBand';
 import sanitizeName from '../logic/sanitizeTrackName';
+import BackgroundCover from '../assets/images/img-noise-1000x800.png';
 import API from '../Api';
 import './songdetail.css';
 
@@ -37,6 +38,10 @@ const SongDetailModal = props => {
     fontSize: '0.75rem',
   };
 
+  const descriptionStyle = {
+    margin: '2rem 0',
+  }
+
   const titleFont = {
     fontFamily: 'Squada One, cursive',
   };
@@ -51,9 +56,10 @@ const SongDetailModal = props => {
   };
 
   const backgroundColor = {
-    backgroundColor: '#fff',
-    marginTop:'2rem',
-    padding:'2rem',
+    background: `url(${BackgroundCover})`,
+    color: '#fff',
+    marginTop: '2rem',
+    padding: '2rem',
   }
 
   return (
@@ -65,7 +71,9 @@ const SongDetailModal = props => {
       </div>
       <div style={lectureFont}>
         <div className="contenido">
-          {description}
+          <div style={descriptionStyle}>
+            {description}
+          </div>
           <iframe title={id} src={iframeUrl} height="100" frameBorder="0" allowtransparency="true" allow="encrypted-media" style={iframeStyle} />
           <div style={footLecture}>
             {content}
