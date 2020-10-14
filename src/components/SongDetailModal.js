@@ -33,8 +33,8 @@ const SongDetailModal = props => {
     if (trackgenius.description.html !== '<p>?</p>') { description = parse(trackgenius.description.html); }
   }
   const lectureFont = {
-    fontFamily: 'Playfair Display, serif',
-    fontSize: '0.75rem',
+    fontFamily: 'Piazzolla, serif',
+    fontSize: '1rem',
   };
 
   const descriptionStyle = {
@@ -43,6 +43,7 @@ const SongDetailModal = props => {
 
   const titleFont = {
     fontFamily: 'Squada One, cursive',
+    fontSize:'2rem',
   };
 
   const iframeStyle = {

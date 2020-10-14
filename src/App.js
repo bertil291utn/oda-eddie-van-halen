@@ -15,7 +15,7 @@ import SongDetailModal from './components/SongDetailModal';
 function App() {
   const stylesTrackList = {
     background: `url(${BackgroundImage})`,
-    height: '100vh',
+    height: '100vw',
 
   };
   return (

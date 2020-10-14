@@ -12,7 +12,7 @@ import logicMethods from '../logic/logicMethods';
 const TrackList = () => {
   const [album, setAlbum] = useState('All');
   const [state, dispatch] = GetTracksHook(album);
-  const { miliToFormat } = logicMethods;
+  const { miliToFormat, filterLimitedTracks } = logicMethods;
   let trackNumber = 0;
 
   if (!state) return null;
@@ -25,9 +25,9 @@ const TrackList = () => {
     });
   };
 
-  let renderTracks = tracks;
+  let renderTracks = filterLimitedTracks(tracks, 10);
   if (album !== 'All') {
-    renderTracks = filterTracks;
+    renderTracks = filterLimitedTracks(filterTracks, 10);
   }
 
   const cdBackground = {
