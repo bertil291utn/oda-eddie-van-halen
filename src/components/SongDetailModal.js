@@ -43,7 +43,7 @@ const SongDetailModal = props => {
 
   const titleFont = {
     fontFamily: 'Squada One, cursive',
-    fontSize:'2rem',
+    fontSize: '2rem',
   };
 
   const iframeStyle = {

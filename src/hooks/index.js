@@ -1,7 +1,7 @@
 import { useEffect, useReducer } from 'react';
-import ACTIONS from '../actions';
+import ACTIONS from '../redux/actions';
 import API from '../Api';
-import trackReducer from '../reducers/trackReducer';
+import trackReducer from '../redux/reducers/trackReducer';
 
 const DEFAULT_ALBUM_ID = '1y4BZLtyURo81rC6yGLRAu';
 
