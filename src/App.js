@@ -28,9 +28,7 @@ function App() {
             <Route path="/albums">
               <TrackList />
             </Route>
-            <Route path="/track/:id">
-              <SongDetailModal />
-            </Route>
+            <Route path="/track/:id" component={SongDetailModal} />
             <Route path="/">
               <EddiesBio />
             </Route>

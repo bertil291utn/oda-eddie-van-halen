@@ -82,7 +82,7 @@ const TrackList = () => {
                         key={elem.id}
                         to={{
                           pathname: `/track/${elem.id}`,
-                          state: { elem },
+                          state: { ...elem },
                         }}
                       >
                         <div className="track">
