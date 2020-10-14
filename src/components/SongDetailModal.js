@@ -8,10 +8,9 @@ import './songdetail.css';
 import styles from './songDetail.module.css';
 
 const SongDetailModal = props => {
-  console.log(props);
-  const track = props.location.state;
-  // const { state } = location;
-  // const { track } = state;
+  const { location } = props;
+  const { state } = location;
+  const track = state;
   const [trackgenius, setTrackDetail] = useState(null);
   const { id, album, name } = track;
   const iframeUrl = `https://open.spotify.com/embed/track/${id}`;
@@ -63,16 +62,7 @@ const SongDetailModal = props => {
 };
 
 SongDetailModal.propTypes = {
-  id: PropTypes.string,
-  album: PropTypes.string,
-  name: PropTypes.string,
-};
-
-SongDetailModal.defaultProps = {
-  id: '',
-  album: '',
-  name: '',
-
+  location: PropTypes.objectOf(PropTypes.objectOf).isRequired,
 };
 
 export default SongDetailModal;
