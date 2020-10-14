@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import API from '../Api';
+import styles from './albumFilter.module.css'
 
 const AlbumFilter = ({ onChange }) => {
   const VanHalenId = '2cnMpRsOVqtPMfq7YiFE6K';
@@ -14,12 +15,10 @@ const AlbumFilter = ({ onChange }) => {
     );
   }, []);
 
-  const labelStyle = {
-    marginTop: '2rem',
-  };
+
 
   return (
-    <label htmlFor="albums" style={labelStyle}>
+    <label htmlFor="albums" className={styles.labelStyle}>
       <select
         name="albums"
         id="albums"

@@ -3,9 +3,10 @@
 }
 
 .bio {
-  font-family: 'Playfair Display', serif;
+  background: url(../assets/images/img-noise-1000x800.png);
   color: #fff;
   display: grid;
+  font-family: 'Playfair Display', serif;
   grid-template-columns: 1fr 1fr;
   position: relative;
 }
@@ -49,6 +50,10 @@
 
 .bioStyle {
   margin-top: 2rem;
+}
+
+.coverCdLink {
+  display: inline-grid;
 }
 
 @media screen and (min-width: 1600px) {

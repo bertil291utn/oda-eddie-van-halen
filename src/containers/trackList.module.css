@@ -1,3 +1,33 @@
+.cdBackground {
+  background: url(../assets/images/cd2-backg.png);
+  height: 100%;
+}
+
+.coverStyle {
+  position: absolute;
+  left: 0;
+  height: 100%;
+}
+
+.cdCaseStyle {
+  height: 110%;
+  left: 0;
+  margin-left: -1.5vw;
+  margin-top: -1.6vw;
+  position: absolute;
+  top: 0;
+  width: 66vw;
+  max-width: 1100px;
+}
+
+.durationStyle {
+  color: var(--secondary-color);
+}
+
+.fontWeight {
+  font-weight: 500;
+}
+
 .container {
   padding: 1rem 0;
 }

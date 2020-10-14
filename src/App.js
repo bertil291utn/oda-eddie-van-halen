@@ -8,33 +8,29 @@ import {
 import TrackList from './containers/TrackList';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import EddiesBio from './components/EddiesBio';
-import BackgroundImage from './assets/images/background.jpg';
 import NavBar from './components/NavBar';
 import SongDetailModal from './components/SongDetailModal';
 
 function App() {
-  const stylesTrackList = {
-    background: `url(${BackgroundImage})`,
-    height: '100vw',
-
-  };
   return (
-    <div className="App" style={stylesTrackList}>
+    <div className="App">
       <Router>
         <div>
           <NavBar />
-          <Switch>
-            <Route path="/albums">
-              <TrackList />
-            </Route>
-            <Route path="/track/:id" component={SongDetailModal} />
-            <Route path="/">
-              <EddiesBio />
-            </Route>
-          </Switch>
+          <div className="app-content">
+            <Switch>
+              <Route path="/albums">
+                <TrackList />
+              </Route>
+              <Route path="/track/:id" component={SongDetailModal} />
+              <Route path="/">
+                <EddiesBio />
+              </Route>
+            </Switch>
+          </div>
         </div>
       </Router>
-    </div>
+    </div >
   );
 }
 

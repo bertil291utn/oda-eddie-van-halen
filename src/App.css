@@ -6,3 +6,12 @@
 a {
   color: #fff !important;
 }
+
+.App {
+  background: url(./assets/images/background.jpg);
+  height: 100vw;
+}
+
+.app-content {
+  padding-top: 4vw;
+}
