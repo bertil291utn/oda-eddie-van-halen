@@ -10,6 +10,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import EddiesBio from './components/EddiesBio';
 import BackgroundImage from './assets/images/background.jpg';
 import NavBar from './components/NavBar';
+import SongDetailModal from './components/SongDetailModal';
 
 
 function App() {
@@ -26,6 +27,9 @@ function App() {
           <Switch>
             <Route path="/albums">
               <TrackList />
+            </Route>
+            <Route path="/track/:id">
+              <SongDetailModal />
             </Route>
             <Route path="/">
               <EddiesBio />

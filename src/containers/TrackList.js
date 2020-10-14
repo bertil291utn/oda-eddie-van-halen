@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { Container, Tab, Tabs } from 'react-bootstrap';
+import { Container } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import SongDetailModal from '../components/SongDetailModal';
-import EddiesBio from '../components/EddiesBio';
 import GetTracksHook from '../hooks';
 import AlbumFilter from '../components/AlbumFilter';
 import cdBackgroundImage from '../assets/images/cd2-backg.png';
@@ -13,7 +13,6 @@ import miliToFormat from '../logic/mstoseg';
 const TrackList = () => {
   const [album, setAlbum] = useState('All');
   const [track, setTrack] = useState({});
-  const [modalShow, setModalShow] = useState(false);
   const [state, dispatch] = GetTracksHook(album);
   let trackNumber = 0;
 
@@ -33,11 +32,8 @@ const TrackList = () => {
   }
 
   const sendDetailTrack = track => {
-    setModalShow(true);
     setTrack(track);
   };
-
-
 
   const cdBackground = {
     background: `url(${cdBackgroundImage})`,
@@ -82,19 +78,19 @@ const TrackList = () => {
                   renderTracks.map(elem => {
                     trackNumber += 1;
                     return (
-                      <div
+                      <Link
                         key={elem.id}
-                        onClick={() => sendDetailTrack(elem)}
-                        onKeyPress={() => { }}
-                        role="button"
-                        tabIndex="0"
+                        to={{
+                          pathname: `/track/${elem.id}`,
+                          state: { elem },
+                        }}
                       >
                         <div className="track">
                           <div style={fontWeight}>{trackNumber}</div>
                           <div style={fontWeight}>{elem.name}</div>
                           <div style={durationStyle}>{miliToFormat(elem.duration)}</div>
                         </div>
-                      </div>
+                      </Link>
                     );
                   })
                 }
@@ -103,11 +99,9 @@ const TrackList = () => {
           </div>
           <AlbumFilter onChange={changeFilter} />
         </div>
-        <SongDetailModal
-          onHide={() => setModalShow(false)}
-          show={modalShow}
+        {/* <SongDetailModal
           track={track}
-        />
+        /> */}
       </div>
     </Container>
   );
