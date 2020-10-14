@@ -1,0 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&display=swap');
+
+.nav-bar {
+  margin-bottom: 1rem !important;
+}
+
+.albums {
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.cover-content {
+  height: 31vw;
+  margin: 0 auto;
+  max-height: 520px;
+  max-width: 1100px;
+  position: relative;
+  width: 63vw;
+}
+
+.track {
+  display: grid;
+  grid-template-columns: 1.25vw 22vw 1fr;
+  font-family: 'Rajdhani', sans-serif;
+}
+
+.tracks-detail,
+.tracks-detail a {
+  color: var(--primary-color) !important;
+}
+
+.tracks-detail {
+  margin-top: 1rem;
+  padding: 1rem;
+  position: absolute;
+  margin-left: 57%;
+  text-align: left;
+  top: 0;
+}

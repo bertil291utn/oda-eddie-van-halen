@@ -1,0 +1,63 @@
+.titleFont {
+  font-family: 'Squada One', cursive;
+}
+
+.bio {
+  background: url(../assets/images/img-noise-1000x800.png);
+  color: #fff;
+  display: grid;
+  font-family: 'Playfair Display', serif;
+  grid-template-columns: 1fr 1fr;
+  position: relative;
+}
+
+.img {
+  height: 35vw;
+  width: 50vw;
+  max-width: 700px;
+  max-height: 500px;
+}
+
+.info {
+  font-size: 1.25vw;
+  margin-left: -1vw;
+  padding: 1.5rem;
+  text-align: right;
+}
+
+.bottomRight {
+  bottom: 0;
+  font-family: 'Squada One', cursive;
+  position: absolute;
+  padding-right: 1.5rem;
+  right: 0;
+}
+
+.verticalLine {
+  border-left: 1px solid #fff;
+  height: 100%;
+  position: absolute;
+  left: 50%;
+}
+
+.caseCd {
+  position: absolute;
+  width: 103%;
+  height: 109%;
+  margin-top: -1.5vw;
+  margin-left: -1.5vw;
+}
+
+.bioStyle {
+  margin-top: 2rem;
+}
+
+.coverCdLink {
+  display: inline-grid;
+}
+
+@media screen and (min-width: 1600px) {
+  .info {
+    font-size: 19px;
+  }
+}

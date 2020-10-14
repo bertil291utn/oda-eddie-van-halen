@@ -1,0 +1,29 @@
+.backgroundColor {
+  background: url(../assets/images/img-noise-1000x800.png);
+  color: #fff;
+  margin-top: 2rem;
+  padding: 2rem;
+}
+
+.lectureFont {
+  font-family: 'Piazzolla', serif;
+  font-size: 1rem;
+}
+
+.descriptionStyle {
+  margin: 2rem 0;
+}
+
+.titleFont {
+  font-family: 'Squada One', cursive;
+  font-size: 2rem;
+}
+
+.iframeStyle {
+  width: 100%;
+}
+
+.footLecture {
+  font-family: 'Squada One', cursive;
+  font-size: 0.9rem;
+}
