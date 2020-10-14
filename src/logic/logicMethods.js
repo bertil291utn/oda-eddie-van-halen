@@ -1,5 +1,5 @@
 const logicMethods = (() => {
-  const filterLimitedTracks = (array, top) => array.filter((_, index) => index < top)
+  const filterLimitedTracks = (array, top) => array.filter((_, index) => index < top);
   const miliToFormat = millis => {
     const minutes = Math.floor(millis / 60000);
     const seconds = ((millis % 60000) / 1000).toFixed(0);
@@ -16,7 +16,7 @@ const logicMethods = (() => {
     miliToFormat,
     sanitizeName,
     searchVanHalenBand,
-  }
-})()
+  };
+})();
 
 export default logicMethods;

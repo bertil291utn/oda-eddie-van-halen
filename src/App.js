@@ -12,7 +12,6 @@ import BackgroundImage from './assets/images/background.jpg';
 import NavBar from './components/NavBar';
 import SongDetailModal from './components/SongDetailModal';
 
-
 function App() {
   const stylesTrackList = {
     background: `url(${BackgroundImage})`,

@@ -1,20 +1,19 @@
-import logicMethods from './logicMethods'
+import logicMethods from './logicMethods';
 import API from '../Api';
 
 const {
   filterLimitedTracks,
   miliToFormat,
   sanitizeName,
-  searchVanHalenBand, } = logicMethods;
-
+  searchVanHalenBand,
+} = logicMethods;
 
 describe('Filter tracks only ten method', () => {
-  const array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+  const array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
   it('returns an array with limited tracks ', () => {
-    expect(filterLimitedTracks(array, 10)).toStrictEqual([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
+    expect(filterLimitedTracks(array, 10)).toStrictEqual([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
   });
 });
-
 
 describe('Milisec to minutes and seconds', () => {
   it('returns a string formatted time from a milisec', () => {
@@ -30,7 +29,6 @@ describe('return sanitized track name', () => {
     expect(sanitizeName('Mean Street')).toMatch(/Mean Street/);
   });
 });
-
 
 describe('band', () => {
   it('returns an array of Van Halens coincides tracks', async () => {

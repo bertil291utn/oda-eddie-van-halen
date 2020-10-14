@@ -1,6 +1,5 @@
-import React from 'react'
+import React from 'react';
 import { Nav, Navbar } from 'react-bootstrap';
-
 
 const NavBar = () => (
   <Navbar bg="dark" variant="dark">
@@ -9,6 +8,6 @@ const NavBar = () => (
       <Nav.Link href="/albums">Albums</Nav.Link>
     </Nav>
   </Navbar>
-)
+);
 
 export default NavBar;

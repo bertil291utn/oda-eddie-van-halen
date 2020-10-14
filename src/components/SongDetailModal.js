@@ -39,7 +39,7 @@ const SongDetailModal = props => {
 
   const descriptionStyle = {
     margin: '2rem 0',
-  }
+  };
 
   const titleFont = {
     fontFamily: 'Squada One, cursive',
@@ -59,7 +59,7 @@ const SongDetailModal = props => {
     color: '#fff',
     marginTop: '2rem',
     padding: '2rem',
-  }
+  };
 
   return (
     <Container fluid="md" style={backgroundColor}>
@@ -94,6 +94,6 @@ SongDetailModal.defaultProps = {
   album: '',
   name: '',
 
-}
+};
 
 export default SongDetailModal;

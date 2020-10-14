@@ -9,11 +9,10 @@ import './tracklist.css';
 import styles from './trackList.module.css';
 import logicMethods from '../logic/logicMethods';
 
-
-
 const TrackList = () => {
   const [album, setAlbum] = useState('All');
   const [state, dispatch] = GetTracksHook(album);
+  const { miliToFormat } = logicMethods;
   let trackNumber = 0;
 
   if (!state) return null;
@@ -30,7 +29,6 @@ const TrackList = () => {
   if (album !== 'All') {
     renderTracks = filterTracks;
   }
-
 
   const cdBackground = {
     background: `url(${cdBackgroundImage})`,
@@ -85,7 +83,7 @@ const TrackList = () => {
                         <div className="track">
                           <div style={fontWeight}>{trackNumber}</div>
                           <div style={fontWeight}>{elem.name}</div>
-                          <div style={durationStyle}>{logicMethods.miliToFormat(elem.duration)}</div>
+                          <div style={durationStyle}>{miliToFormat(elem.duration)}</div>
                         </div>
                       </Link>
                     );
